@@ -44,8 +44,7 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);bac
 .tag{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);color:var(--ink2);font-size:12px;
   padding:6px 13px;border-radius:980px;margin-bottom:18px;background:#fff}
 .tag .dot{width:6px;height:6px;border-radius:50%;background:var(--ink)}
-.hero h1{font-size:clamp(30px,5vw,46px);letter-spacing:-.035em;
-  background:linear-gradient(180deg,#1d1d1f,#5a5a5f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1{font-size:clamp(30px,5vw,46px);letter-spacing:-.035em;color:var(--ink)}
 .hero p{font-size:clamp(15px,2vw,18px);color:var(--ink2);margin:12px 0 0;max-width:54ch}
 .stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .stat{background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px 16px;min-width:120px}
@@ -67,8 +66,8 @@ section{padding:40px 0}
 .attrow .sw{width:11px;height:11px;border-radius:3px}
 .attrow .an{font-size:13.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .attrow .am{font-size:12px;color:var(--muted)}
-.attrow .track{height:5px;background:var(--weak);border-radius:3px;margin-top:4px;overflow:hidden}
-.attrow .fill{height:100%;background:var(--ink);border-radius:3px}
+.attrow .track{height:6px;background:#fff;border:1px solid rgba(0,0,0,.14);border-radius:3px;margin-top:4px;overflow:hidden}
+.attrow .fill{height:100%;background:var(--ink)}
 .attrow .ap{font-variant-numeric:tabular-nums;font-size:13px;font-weight:600}
 
 /* ranking */
@@ -93,9 +92,9 @@ section{padding:40px 0}
 .bdg .b{filter:grayscale(1);opacity:.75;font-size:10px}
 .nmcell .mt{font-size:11.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nmcell .mt .fl{font-size:13px}
-.minibar{display:flex;gap:2.5px;height:14px}
-.minibar i{flex:1;border-radius:2px}
-.minibar i.strong{background:var(--strong)} .minibar i.mid{background:var(--mid)} .minibar i.weak{background:var(--weak)}
+.minibar{display:flex;gap:3px;height:18px}
+.minibar i{flex:1;border:1px solid rgba(0,0,0,.16);border-radius:2px;display:flex;align-items:flex-end;overflow:hidden;background:#fff}
+.minibar i s{display:block;width:100%;background:var(--ink)}
 .rr{font-size:11.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;line-height:1.5}
 .rr b{color:var(--ink2)}
 .cii{font-size:20px;font-weight:600;text-align:right;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
@@ -104,7 +103,7 @@ section{padding:40px 0}
 @media(max-width:760px){.row{grid-template-columns:26px 1fr 52px 14px}.minibar,.rr{display:none}}
 
 /* detail */
-.detail{padding:6px 18px 22px;background:var(--bg2);border-top:1px solid var(--line2)}
+.detail{padding:6px 18px 22px;background:#fff;border-top:1px solid var(--line)}
 .dgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:8px}
 @media(max-width:760px){.dgrid{grid-template-columns:1fr}}
 .dcol h4{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:600;display:flex;justify-content:space-between}
@@ -112,8 +111,8 @@ section{padding:40px 0}
 .met{margin-bottom:13px}
 .met .mlab{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
 .met .mlab b{font-weight:500} .met .mlab .mp{color:var(--ink2);font-variant-numeric:tabular-nums;font-weight:600}
-.met .mtrack{height:6px;background:#e3e3e7;border-radius:4px;overflow:hidden}
-.met .mfill{height:100%;border-radius:4px}
+.met .mtrack{height:7px;background:#fff;border:1px solid rgba(0,0,0,.14);border-radius:4px;overflow:hidden}
+.met .mfill{height:100%;border-radius:0;background:var(--ink)}
 .met .mcap{font-size:11.5px;color:var(--muted);margin-top:4px}
 .dhead{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 4px}
 .dhead .qd{font-size:12.5px;color:var(--ink2);background:#fff;border:1px solid var(--line);border-radius:980px;padding:4px 11px}
@@ -133,21 +132,21 @@ section{padding:40px 0}
 .qd2 .cnt{margin-left:auto;font-size:20px;font-weight:600}
 .dotlabel{font-size:9px;fill:var(--muted);font-family:var(--font)}
 
-/* dark sections */
-.darkwrap{background:linear-gradient(180deg,var(--dark1),var(--dark0));color:#fff}
-.ovp h2{color:#fff;font-size:clamp(24px,3.5vw,32px);margin-bottom:6px;letter-spacing:-.03em}
-.ovp p.s{color:rgba(255,255,255,.6);max-width:62ch;font-size:14.5px;margin:0}
+/* (formerly dark) sections — now white */
+.darkwrap{background:#fff;color:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ovp h2{color:var(--ink);font-size:clamp(24px,3.5vw,32px);margin-bottom:6px;letter-spacing:-.03em}
+.ovp p.s{color:var(--muted);max-width:62ch;font-size:14.5px;margin:0}
 .ovgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:11px;margin-top:24px}
-.ovcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:15px 17px;cursor:pointer}
-.ovcard:hover{background:rgba(255,255,255,.09)}
-.ovcard .x{font-size:30px;font-weight:600;letter-spacing:-.03em}
+.ovcard{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px 17px;cursor:pointer;transition:box-shadow .12s}
+.ovcard:hover{box-shadow:0 6px 20px rgba(0,0,0,.07)}
+.ovcard .x{font-size:30px;font-weight:600;letter-spacing:-.03em;color:var(--ink)}
 .ovcard .nm{font-weight:600;margin-top:2px;font-size:14.5px}
-.ovcard .mt{font-size:11.5px;color:rgba(255,255,255,.55);margin-top:2px}
+.ovcard .mt{font-size:11.5px;color:var(--muted);margin-top:2px}
 .cta-inner{text-align:center;padding:14px 0}
-.cta-inner h2{color:#fff;font-size:clamp(24px,3.5vw,34px);margin-bottom:12px;letter-spacing:-.03em}
-.cta-inner p{color:rgba(255,255,255,.62);max-width:54ch;margin:0 auto 22px;font-size:15px}
-.btn{display:inline-block;background:#fff;color:var(--ink);font-weight:500;padding:12px 24px;border-radius:980px;font-size:14.5px}
-.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;margin-left:8px}
+.cta-inner h2{color:var(--ink);font-size:clamp(24px,3.5vw,34px);margin-bottom:12px;letter-spacing:-.03em}
+.cta-inner p{color:var(--muted);max-width:54ch;margin:0 auto 22px;font-size:15px}
+.btn{display:inline-block;background:var(--ink);color:#fff;font-weight:500;padding:12px 24px;border-radius:980px;font-size:14.5px}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink);margin-left:8px}
 
 /* method */
 .method{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -189,7 +188,7 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:var(--bg
   </div>
 </div></section>
 
-<section id="ranking" style="background:var(--bg2);border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)"><div class="wrap">
+<section id="ranking" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
   <div class="rank-head">
     <div class="sec-h" style="margin:0"><h2>The ranking</h2><span class="hint">click any Commissioner for the full metric breakdown</span></div>
     <div class="seg" id="sortseg">
@@ -286,10 +285,10 @@ function renderDonut(){
     const x1=cx+ro*Math.cos(ang),y1=cy+ro*Math.sin(ang),x2=cx+ro*Math.cos(a2),y2=cy+ro*Math.sin(a2);
     const xi2=cx+ri*Math.cos(a2),yi2=cy+ri*Math.sin(a2),xi1=cx+ri*Math.cos(ang),yi1=cy+ri*Math.sin(ang);
     const big=frac>0.5?1:0;
-    const dim = selected && selected!==c.name;
-    const fill = selected===c.name ? '#000' : greyOf[c.name];
+    const sel = selected===c.name;
+    const fill = sel ? '#1d1d1f' : '#ffffff';
     s+=`<path d="M${x1} ${y1} A${ro} ${ro} 0 ${big} 1 ${x2} ${y2} L${xi2} ${yi2} A${ri} ${ri} 0 ${big} 0 ${xi1} ${yi1} Z" `
-      +`fill="${fill}" opacity="${dim?0.28:1}" stroke="#fff" stroke-width="1.5" style="cursor:pointer" `
+      +`fill="${fill}" stroke="#1d1d1f" stroke-width="1" style="cursor:pointer" `
       +`onclick="pick('${c.name.replace(/'/g,"\\'")}',true)"><title>${c.name} — ${c.sov_pct}% of engagement</title></path>`;
     ang=a2;
   });
@@ -324,7 +323,7 @@ const CAP = {
 };
 function metricHTML(b,c){
   return `<div class="met"><div class="mlab"><b>${b.label}</b><span class="mp">#${b.rank}<span style="color:#aeaeb2"> / ${N}</span></span></div>
-    <div class="mtrack"><div class="mfill" style="width:${b.pct}%;background:${FILL[BC[b.band]]}"></div></div>
+    <div class="mtrack"><div class="mfill" style="width:${b.pct}%"></div></div>
     <div class="mcap">${CAP[b.label](c)}</div></div>`;
 }
 function detailHTML(c){
@@ -346,7 +345,7 @@ function detailHTML(c){
 function renderList(){
   const arr=[...R].sort((a,b)=>b[sortKey]-a[sortKey]);
   document.getElementById('list').innerHTML = arr.map((c,i)=>{
-    const mini=c.bar.map(b=>`<i class="${BC[b.band]}"></i>`).join('');
+    const mini=c.bar.map(b=>`<i><s style="height:${Math.max(8,b.pct)}%"></s></i>`).join('');
     const open=selected===c.name;
     return `<div class="item ${open?'sel':''}" id="it-${c.rank}">
       <div class="row" onclick="pick('${c.name.replace(/'/g,"\\'")}',false)">
