@@ -167,7 +167,7 @@ footer{padding:36px 0;color:var(--muted);font-size:12.5px;border-top:1px solid v
   <div class="transition">
     <div class="teyebrow">But biggest ≠ best</div>
     <h2>Raw reach and audience size reflect the <em>job</em>, not the quality of the communication.</h2>
-    <p>Commissioners have <b>drastically different roles of varying importance</b> — a President or Foreign-Affairs chief will always out-reach a Fisheries Commissioner, whatever they post. And a big following says nothing about whether people actually <b>react</b>, or whether the content is any <b>good</b>. So we built the <b>Commissioner Influence Index</b> — a 0–100 report card, graded <b>A–F</b>, that measures the communication itself.</p>
+    <p>Commissioners have <b>drastically different roles of varying importance</b> — a President or Foreign-Affairs chief will always out-reach a Fisheries Commissioner, whatever they post. And a big following says nothing about whether people actually <b>react</b>, or whether the content is any <b>good</b>. So we built the <b>Commissioner Influence Index</b> — a <b>0–100 report card</b> that measures the communication itself.</p>
   </div>
   <div id="winnerCard"></div>
   <div class="vsnote" id="vsnote"></div>
@@ -305,21 +305,21 @@ function renderDonut(){const cx=150,cy=150,ro=132,ri=80;
 // ---- winner + awards ----
 function renderWinner(){
  const w=ROWS[0];const p=platform;
- const gW=grade(w.cii), g0=gW[0];
+ const sc=rnd(w.cii);
  let hook;
- if(p==='overall') hook=`On a normal grading curve, even the Commission's best communicator earns only a <b>${gW}</b> — and almost everyone else is failing. Nobody is firing on all cylinders; that gap is exactly what we help fix.`;
- else if(g0==='A'||g0==='B') hook=`${last(w.name)} sets the bar on ${PLABEL[p]} (<b>${gW}</b>) — most of the field is a long way behind.`;
- else hook=`Even ${PLABEL[p]}'s strongest communicator manages only a <b>${gW}</b> — there's real ground for everyone to make up.`;
+ if(p==='overall') hook=`Even the Commission's best communicator scores only <b>${sc}/100</b> — and most sit far lower. Nobody is firing on all cylinders; that gap is exactly what we help fix.`;
+ else if(w.cii>=80) hook=`${last(w.name)} sets the bar on ${PLABEL[p]} (<b>${sc}/100</b>) — most of the field is a long way behind.`;
+ else hook=`Even ${PLABEL[p]}'s strongest communicator scores only <b>${sc}/100</b> — there's real ground for everyone to make up.`;
  document.getElementById('winnerCard').innerHTML=
-  `<div class="winner">${avatar(w,'')}<div><div class="lab">🏆 Best communicator ${p==='overall'?'of the 27 Commissioners':'on '+PLABEL[p]}</div><div class="nm">${w.flag} ${w.name}</div><div class="rl">${w.role}</div><div class="gbadge" style="margin-top:8px"><span class="g">${gW}</span><span class="gs">${gradeWord(w.cii)} · ${rnd(w.cii)}/100</span></div></div></div>
+  `<div class="winner">${avatar(w,'')}<div><div class="lab">🏆 Best communicator ${p==='overall'?'of the 27 Commissioners':'on '+PLABEL[p]}</div><div class="nm">${w.flag} ${w.name}</div><div class="rl">${w.role}</div><div class="gbadge" style="margin-top:8px"><span class="g">${sc}</span><span class="gs">out of 100</span></div></div></div>
    <div class="hook">${hook}</div>`;
  // biggest-audience vs grade contrast
  const big=[...ROWS].filter(c=>c.foll>0).sort((a,b)=>b.foll-a.foll)[0];
  const tot=ROWS.reduce((s,c)=>s+c.foll,0)||1;
  document.getElementById('vsnote').innerHTML= big&&big.name!==w.name
-  ?`<b>${big.name}</b> owns <b>${Math.round(big.foll/tot*100)}%</b> of the ${AUDWORD[p]} audience — yet as a communicator grades <b>${grade(big.cii)}</b> (ranked #${big.rank}). Biggest ≠ best.`
+  ?`<b>${big.name}</b> owns <b>${Math.round(big.foll/tot*100)}%</b> of the ${AUDWORD[p]} audience — yet as a communicator scores just <b>${rnd(big.cii)}/100</b> (ranked #${big.rank}). Biggest ≠ best.`
   :`The biggest audience and the best communication line up here — but that's the exception, not the rule.`;
- const cards=[['🏆 Overall',w,`${grade(w.cii)} · ${rnd(w.cii)}/100`]];
+ const cards=[['🏆 Overall',w,`${rnd(w.cii)}/100`]];
  const rz=champ('resonance');if(rz)cards.push(['❤️ Most reactive audience',rz,`Resonance ${rnd(rz.resonance)}/100`]);
  if(p!=='x'){const q=champ('quality');if(q)cards.push(['🎬 Best craft',q,`Quality ${rnd(q.quality)}/100`]);}
  const rc=champ('reach');if(rc)cards.push(['📣 Most consistent',rc,`Reach ${rnd(rc.reach)}/100`]);
@@ -344,7 +344,7 @@ function overallDetail(m){
  const cards=['linkedin','instagram','x'].map(pk=>{const s=m.platforms[pk];
   if(!s||!s.present)return `<div class="pcard absent"><div class="ph">${PLABEL[pk]}</div><div class="pg">—</div><div class="pss">not active</div></div>`;
   const q=s.quality==null?'Q n/a':'Q '+rnd(s.quality);
-  return `<div class="pcard" onclick="go('${pk}','${m.name.replace(/'/g,"\\'")}')" style="cursor:pointer"><div class="ph">${PLABEL[pk]} <span style="color:var(--faint)">↗</span></div><div class="pg">${grade(s.cii)}</div><div class="pss">${rnd(s.cii)}/100</div><div class="prow"><span>R ${rnd(s.reach)}</span><span>Rz ${rnd(s.resonance)}</span><span>${q}</span></div></div>`;}).join('');
+  return `<div class="pcard" onclick="go('${pk}','${m.name.replace(/'/g,"\\'")}')" style="cursor:pointer"><div class="ph">${PLABEL[pk]} <span style="color:var(--faint)">↗</span></div><div class="pg">${rnd(s.cii)}</div><div class="pss">out of 100</div><div class="prow"><span>R ${rnd(s.reach)}</span><span>Rz ${rnd(s.resonance)}</span><span>${q}</span></div></div>`;}).join('');
  const ov=m.overall;
  const cat=k=>`<div class="cbar" style="max-width:170px"><div class="cl"><span>${CATLBL[k]}</span><b>${rnd(ov[k])}</b></div><div class="ctrack"><div class="cfill" style="width:${ov[k]||0}%"></div></div></div>`;
  return `<div class="detail"><div style="font-size:12.5px;color:var(--muted);margin:4px 0 10px">Average across the <b>${ov.platforms.length}</b> platform${ov.platforms.length>1?'s':''} ${m.name.split(' ')[0]} is active on — click a platform to open its full breakdown.</div>
@@ -363,7 +363,7 @@ function renderList(){
    <div class="rk">${key==='cii'?c.rank:(i+1)}</div>${avatar(c)}
    <div><div class="nm">${c.name}${pill}</div><div class="mt">${sub}</div></div>
    <div class="cats">${catbar('R',c.reach)}${catbar('Rz',c.resonance)}${catbar('Q',c.quality)}</div>
-   <div class="gradecell"><div class="grade">${grade(c.cii)}</div><div class="gsub">${rnd(c.cii)}/100</div></div><div class="chev">›</div></div>${det}</div>`;}).join('');
+   <div class="gradecell"><div class="grade">${rnd(c.cii)}</div><div class="gsub">/100</div></div><div class="chev">›</div></div>${det}</div>`;}).join('');
 }
 
 function renderAll(){ROWS=rowsFor(platform);if(selected&&!byName(selected).name)selected=null;renderHead();renderDonut();renderWinner();renderList();}
